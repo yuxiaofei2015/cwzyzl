@@ -1,3 +1,4 @@
 uwsgi_params
 cwzyzl_uwsgi.ini
 cwzyzl/settings.py
+*.pyc
