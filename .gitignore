@@ -2,3 +2,4 @@ uwsgi_params
 cwzyzl_uwsgi.ini
 config/settings.py
 *.pyc
+.idea/
