@@ -8,6 +8,7 @@ from . import views
 @file urls.py.py
 @create-time 15-12-23 下午3:20
 """
+app_name = 'blog'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
 ]
