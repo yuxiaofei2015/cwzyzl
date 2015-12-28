@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        .login-panel {
+        width:400px;
+        height:400px;
+        margin-top:270px;
+        padding-top:30px;
+        }
+        .form-element{
+        margin-top:30px;
+        }
+        .form-panel{
+        }
+    </style>
+</head>
+
+<body>
+<div class="bg-success center-block login-panel">
+    <div class="form-panel">
+        <form class="form-horizontal " method="post" action="{% url 'main:login-action' %}">
+            {% csrf_token %}
+            <div class="form-group form-element ">
+                <label for="username" class="control-label col-sm-3">用户名：</label>
+                <div class="col-sm-7">
+                    <input type="text" id="username" name="username" class="form-control" value="{{username}}">
+                </div>
+            </div>
+            <div class="form-group form-element ">
+                <label for="password" class="control-label col-sm-3 ">密码：</label>
+                <div class="col-sm-7">
+                    <input type="password" id="password" name="password" class="form-control" value="{{password}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-8 col-sm-offset-1">
+                    {% if message %}
+                    <p class="text-danger">{{message}}</p>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <div class="form-group form-element">
+                <button class="btn btn-success col-sm-6 col-sm-offset-3">登录</button>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-success col-sm-6 col-sm-offset-3"
+                        onclick="window.location.href='{% url 'main:register' %}'">
+                    注册
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
