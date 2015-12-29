@@ -11,7 +11,8 @@ from . import views
 app_name = 'blog'
 
 urlpatterns = [
-    url(r'^(?P<username>.+)/create/$', views.create, name='create'),
+    url(r'^submit/$', views.submit, name='submit'),
+    url(r'^addGroup/$', views.add_group, name='addGroup'),
+    url(r'^create/$', views.create, name='create'),
     url(r'^(?P<username>.+)/$', views.index, name='index'),
-    url(r'^submit', views.submit, name='submit'),
 ]

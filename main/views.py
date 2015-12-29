@@ -37,7 +37,7 @@ def login_action(request):
     if user is not None:
         if user.is_active:
             django.contrib.auth.login(request, user)
-            return HttpResponseRedirect(reverse('blog:create', args=[username]))
+            return HttpResponseRedirect(reverse('blog:index', args=[username]))
         else:
             return HttpResponse("登录失败")
     else:
