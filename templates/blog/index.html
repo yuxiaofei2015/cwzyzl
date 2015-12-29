@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <title>博客首页</title>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'blog/blog_custom.js' %}" rel="stylesheet">
     <style>
         .blogs{
         width:70%;
@@ -39,6 +40,11 @@
     </div>
 
     <div class="groups">
+        <button class="btn btn-success center-block" id="create-note"
+                onclick="window.location.href='{% url 'blog:create' %}'"
+                style="width:30%">
+            创建笔记
+        </button>
         <ul>
             <li><a href="#">全部</a></li>
             {% for group in group_list %}
