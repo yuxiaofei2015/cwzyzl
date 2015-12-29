@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta charset="UTF-8">
+    <title>博客首页</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        .blogs{
+        width:70%;
+        float:left;
+        }
+        .groups{
+        width:30%;
+        float:left;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <h1 align="center">{{username}}的主页</h1>
+</div>
+<div class="container ">
+    <div class="blogs">
+        {% for blog in blog_list %}
+        <div>
+            <h2>{{blog.title}}</h2>
+            <p>{{blog.content}}</p>
+            <p>{{blog.createTime}}</p>
+            <hr/>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="groups">
+        <ul>
+            <li><a href="#">全部</a></li>
+            {% for group in group_list %}
+            <li><a href="#">group.name</a></li>
+            {% endfor %}
+        </ul>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-3" id="group-add-label" for="group-add">添加分组: </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="group-add" id="group-add">
+                </div>
+            </div>
+        </form>
+        <button class="btn btn-default center-block">添加</button>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

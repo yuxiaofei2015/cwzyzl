@@ -15,6 +15,6 @@ class Blog(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     content = models.TextField()
-    createTime = models.DateField()
+    createTime = models.DateTimeField()
     author = models.ForeignKey(User)
     group = models.ForeignKey(Group, null=True)
