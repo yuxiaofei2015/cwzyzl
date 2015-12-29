@@ -17,4 +17,4 @@ class Blog(models.Model):
     content = models.TextField()
     createTime = models.DateField()
     author = models.ForeignKey(User)
-    group = models.ForeignKey(Group)
+    group = models.ForeignKey(Group, null=True)
