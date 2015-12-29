@@ -10,15 +10,26 @@
     <meta charset="UTF-8">
     <title>博客首页</title>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'blog/blog_custom.js' %}" rel="stylesheet">
+    <script src="{% static 'jquery-1.11.3.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'blog/blog_custom.js' %}" type="text/javascript"></script>
     <style>
-        .blogs{
+        body {
+        background-color:#eeeeee;
+        }
+        .main {
+        background-color:white;
+        padding-top:70px;
+        }
+        .blogs {
         width:70%;
         float:left;
+        border-right:1px solid #eeeeee;
+        padding:20px;
         }
         .groups{
         width:30%;
         float:left;
+        padding:10px;
         }
     </style>
 </head>
@@ -27,7 +38,7 @@
 <div class="header">
     <h1 align="center">{{username}}的主页</h1>
 </div>
-<div class="container ">
+<div class="container main">
     <div class="blogs">
         {% for blog in blog_list %}
         <div>
@@ -42,24 +53,18 @@
     <div class="groups">
         <button class="btn btn-success center-block" id="create-note"
                 onclick="window.location.href='{% url 'blog:create' %}'"
-                style="width:30%">
+                style="width:100%">
             创建笔记
         </button>
-        <ul>
-            <li><a href="#">全部</a></li>
-            {% for group in group_list %}
-            <li><a href="#">group.name</a></li>
-            {% endfor %}
-        </ul>
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-sm-3" id="group-add-label" for="group-add">添加分组: </label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" name="group-add" id="group-add">
-                </div>
-            </div>
-        </form>
-        <button class="btn btn-default center-block">添加</button>
+        <div id="group-list" style="margin-top:60px">
+            <p><b>我的分组：</b></p>
+            <ul class="ul">
+                <li><a href="#">全部</a></li>
+                {% for group in group_list %}
+                <li><a href="#">group.name</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
