@@ -3,3 +3,4 @@ cwzyzl_uwsgi.ini
 config/settings.py
 *.pyc
 .idea/
+migrations/
