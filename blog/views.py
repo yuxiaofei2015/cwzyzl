@@ -3,7 +3,7 @@ import json
 
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
@@ -65,5 +65,6 @@ def add_group(request):
 
 
 @login_required
-def edit(request, blog_id):
-    return HttpResponse('')
+def detail(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+    return render(request, 'blog/detail.html', {'blog': blog})

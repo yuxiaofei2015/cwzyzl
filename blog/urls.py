@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^submit/$', views.submit, name='submit'),
     url(r'^addGroup/$', views.add_group, name='addGroup'),
     url(r'^create/$', views.create, name='create'),
+    url(r'^detail/(?P<blog_id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^(?P<username>.+)/$', views.index, name='index'),
 ]

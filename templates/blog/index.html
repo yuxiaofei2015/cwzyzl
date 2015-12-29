@@ -30,7 +30,7 @@
     <div class="blogs">
         {% for blog in blog_list %}
         <div>
-            <h2>{{blog.title}}</h2>
+            <a href="{% url 'blog:detail' blog.id %}"><h2>{{blog.title}}</h2></a>
             <p>{{blog.content}}</p>
             <p>{{blog.createTime}}</p>
             <hr/>
