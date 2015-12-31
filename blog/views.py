@@ -70,3 +70,10 @@ def add_group(request):
 def detail(request, blog_id):
     blog = get_object_or_404(Blog, id=blog_id)
     return render(request, 'blog/detail.html', {'blog': blog})
+
+
+@login_required
+def group_manage(request):
+    user = request.user
+    group_list = Group.objects.filter(owner_id=user.id)
+    return render(request, 'blog/group_manage.html', {'group_list': group_list})
