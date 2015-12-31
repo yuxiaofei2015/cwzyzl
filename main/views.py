@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import django
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError
@@ -50,3 +51,9 @@ def login_action(request):
                     'password': password,
                     'message': "用户名或者密码错误"
                 })
+
+
+@login_required
+def logout_action(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('main:login'))
