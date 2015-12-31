@@ -3,7 +3,7 @@ import json
 
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
@@ -14,14 +14,16 @@ from blog.models import Group, Blog
 
 @login_required
 def index(request, username):
-    blog_list = Blog.objects.all()
-    return render(request, 'blog/index.html', {'username': username, 'blog_list': blog_list})
+    user = request.user
+    blog_list = Blog.objects.filter(author_id=user.id)
+    return render(request, 'blog/index.html', {'username': user.username, 'blog_list': blog_list})
 
 
 @login_required
 def create(request):
-    username = request.user.username
-    return render(request, 'blog/create.html', {'username': username})
+    user = request.user
+    group_list = Group.objects.filter(owner_id=user.id)
+    return render(request, 'blog/create.html', {'username': user.username, 'group_list': group_list})
 
 
 def submit(request):

@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.db import IntegrityError
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from blog.models import Group
 
 
 # Create your views here.
@@ -27,6 +28,8 @@ def register_result(request):
         if integrity_error[0] == 1062:
             return HttpResponse("Username already exist!")
     else:
+        group = Group(name="默认", owner=user)
+        group.save()
         return render(request, 'main/register_success.html')
 
 
